@@ -36,7 +36,7 @@
                                     if (vals.name == '') { Ext.Msg.alert('Required', 'User Id and Password'); return false; }
                                     formPanel.setMasked({ xtype: 'loadmask', message: 'Authentication in progress...<br/>Please wait' });
                                      Ext.Ajax.request({
-                                        url: 'http://localhost:81/pam/res/checklogin.aspx', 
+                                        url: 'https://pam.suzlon.com/res/checklogin.aspx', 
 										params: { UserName: vals.name, Password: vals.password, IsRemember: vals.rememberMe },
                                         success: function(response) {
                                             formPanel.unmask();
@@ -47,7 +47,7 @@
 
                                                 //For tracking
                                                 Ext.Ajax.request({
-                                                    url: 'http://localhost:81/pam/res/User_Track.aspx',
+                                                    url: 'https://pam.suzlon.com/res/User_Track.aspx',
 													callbackKey: 'callback',
 													params: { Track_Type: 'User_Login' },
                                                     success: function(response) {
@@ -140,7 +140,7 @@
             tag: 'form',
             id: 'login_form_id'
         });
-    Ext.Ajax.request({ url: 'http://localhost:81/pam/res/checklogin.aspx', params: { UserName: isLogout },
+    Ext.Ajax.request({ url: 'https://pam.suzlon.com/res/checklogin.aspx', params: { UserName: isLogout },
         method: 'POST', success:
     function(response) {
                 //var result = Ext.JSON.decode(response.responseText);
