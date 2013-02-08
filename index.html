@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>.:: paM ::. Login</title>
+    <meta charset="utf-8" />
+    <meta name="default-theme-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="resources/css/app.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="sdk/sencha-touch-all.js"></script>
+    <script type="text/javascript">
+        function querySt(ji) {
+            hu = window.location.search.substring(1);
+            gy = hu.split("&");
+            for (i=0;i<gy.length;i++) 
+            {
+                ft = gy[i].split("=");
+                if (ft[0] == ji) {return ft[1];}}
+            }
+
+
+        var isLogout = querySt('UserName');
+        //alert(isLogout);
+    </script>
+    <style type="text/css">
+         /**
+         * Example of an initial loading indicator.
+         * It is recommended to keep this as minimal as possible to provide instant feedback
+         * while other resources are still being loaded for the first time
+         */
+        /* 
+        html, body {
+            height: 100%;
+            background-color: #333333
+        }
+        */
+        #appLoadingIndicator {
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            text-align: center;
+            width: 100%;
+            height: 30px;
+            -webkit-animation-name: appLoadingIndicator;
+            -webkit-animation-duration: 0.5s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-direction: linear;
+        }
+
+        #appLoadingIndicator > * {
+            /*background-color: #FFFFFF;*/
+            background-attachment:#000;
+            display: inline-block;
+            height: 30px;
+            -webkit-border-radius: 15px;
+            margin: 0 5px;
+            width: 30px;
+            opacity: 0.8;
+        }
+
+        @-webkit-keyframes appLoadingIndicator{
+            0% {
+                opacity: 0.8
+            }
+            50% {
+                opacity: 0
+            }
+            100% {
+                opacity: 0.8
+            }
+        }
+    </style>
+    <script type="text/javascript" src="app/login.js"></script>
+    
+</head>
+<body>
+<div id="appLoadingIndicator">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>
