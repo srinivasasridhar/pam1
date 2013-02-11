@@ -81,7 +81,112 @@ function ImgError(source) {//alert("s");
 }
 
 
+/***************************
+On Click of Big Icons
+****************************/
+var bigClick = function() {
+    var bText = document.getElementById("badgeSpan_" + this.id).innerText;
+    if (this.id == 'vms' && parseInt(bText) == 0) {
+        Ext.Msg.alert('You have', 'No Visitors Today !!');
+        return false;
+    }
+    sessionStorage['AppTrackTime'] = new Date();
 
+    Ext.Ajax.request({
+        url: 'https://pam.suzlon.com/User_Track.aspx', method: 'post', params: { Track_Type: 'App_Track', App_type: this.id },
+        success: function(response) {
+            var result = response.responseText;
+            if (result == 'vms') {
+                if (parseInt(bText) != 0) {
+                    sessionStorage['AppId'] = 1;
+                    window.location = "vms.html";
+                }
+
+            }
+            else if (result == 'policy') {
+                window.location = "policy.html";
+            }
+            else if (result == 'holidays') {
+                window.location = "holiday.html";
+            }
+            else if (result == 'share') {
+                window.location = "share.html";
+            }
+            else if (result == 'tms') {
+            window.location = "tms.html";
+            /*
+                if (parseInt(bText) != 0)
+                    window.location = "tms.html";
+                else
+                    Ext.Msg.alert('You have', 'No Travel requests to Authorize!!');
+            */        
+            }
+            else if (result == 'ticket') {
+                window.location = "ticket.html";
+            }
+            else if (result == 'feedback') {
+                window.location = "feedback.html";
+            }
+            else if (result == 'cats') {
+                window.location = "cranes.html";
+            }
+            else if (result == 'profile') {
+                window.location = "profile.html";
+            }
+            else if (result == 'idea') {
+                window.location = "idea.html";
+            }
+            else if (result == 'dci') {
+                sessionStorage['AppId'] = 2;
+                window.location = "DCM.htm";
+            }
+            else if (result == 'about') {
+                window.location = "about.html";
+            }
+            else if (result == 'ic') {
+                window.location = "ic.html";
+            }
+            else if (result == 'cafeteria') {
+                window.location = "cafteria.htm";
+            }
+            else if (result == 'settings') {
+                window.location = "PAMSettings.html";
+            }
+            else if (result == 'carbooking') {
+                sessionStorage['AppId'] = 5;
+                window.location = "carbooking.html";
+            }
+
+            else if (result == 'sapps') {
+                sessionStorage['AppId'] = 3;
+                window.location = "sap_ps/sapps.htm";
+            }
+            else if (result == 'iCRMS') {
+                sessionStorage['AppId'] = 4;
+                window.location = "iCRMS.html";
+            }
+            else if (result == 'scada') {
+                sessionStorage['AppId'] = 4;
+                window.location = "scadaimport.html";
+            }
+            else {
+                //                Ext.Ajax.request({
+                //                    url: 'https://pam.suzlon.com/counters.aspx', params: { Track_Type: 'App_Track', App_type: this.id },
+                //                    success: function(response) {
+                //                        // Ext.Msg.alert('Comming Soon', 'Mean whiles try other icon');
+                //                    }
+                //                });
+                //Ext.Msg.alert('Comming Soon', 'Mean whiles try other icon');
+            }
+        }
+    });
+
+
+
+
+
+}
+/**End of Big Icon Click **/
 
 
 
